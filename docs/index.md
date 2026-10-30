@@ -4,7 +4,7 @@
 
 ![CI](https://github.com/OWNER/skeptic/actions/workflows/ci.yml/badge.svg)
 
-Skeptic is a small Python library for testing trading hypotheses without fooling yourself: point-in-time data access, purged and combinatorial cross-validation, Sharpe inference that accounts for fat tails and for the number of trials you ran, and a ledger that records every trial so the count cannot hide. It validates itself by simulation, and it is used by the two studies it was built for, [ExecLab](../execlab) and the [AUD Cost Atlas](../aud-cost-atlas).
+Skeptic is a small Python library for testing trading hypotheses without fooling yourself: point-in-time data access, purged and combinatorial cross-validation, Sharpe inference that accounts for fat tails and for the number of trials you ran, and a ledger that records every trial so the count cannot hide. It validates itself by simulation, and it is used by the two studies it was built for, [ExecLab](https://github.com/OWNER/execlab) and the [AUD Cost Atlas](https://github.com/OWNER/aud-cost-atlas).
 
 ## Key findings
 
@@ -73,8 +73,8 @@ Full results: put the Binance monthly 1-minute kline zips in `../data/binance/` 
 
 ## Used by
 
-- [ExecLab](../execlab): purged walk-forward splits with an embargo for model tuning, the trial ledger (160 Optuna trials logged) and block-bootstrap intervals on every headline number.
-- [AUD Cost Atlas](../aud-cost-atlas): bootstrap bands for the event study and Holm correction across currency pairs and event types.
+- [ExecLab](https://github.com/OWNER/execlab): purged walk-forward splits with an embargo for model tuning, the trial ledger (160 Optuna trials logged) and block-bootstrap intervals on every headline number.
+- [AUD Cost Atlas](https://github.com/OWNER/aud-cost-atlas): bootstrap bands for the event study and Holm correction across currency pairs and event types.
 
 ## Limitations
 
