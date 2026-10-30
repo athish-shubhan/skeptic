@@ -1,0 +1,4 @@
+site_name: Skeptic
+nav:
+  - Home: index.md
+  - Research note: note.md

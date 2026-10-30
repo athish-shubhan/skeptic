@@ -24,7 +24,6 @@ from .ledger import Ledger
 from .stats import (
     annualise,
     deflated_sharpe_ratio,
-    max_drawdown,
     min_track_record_length,
     moments,
     probabilistic_sharpe_ratio,

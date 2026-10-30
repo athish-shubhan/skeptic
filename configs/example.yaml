@@ -1,0 +1,17 @@
+# skeptic run configs/example.yaml
+study: example_tsmom
+ledger: reports/ledger.sqlite
+out: reports
+data:
+  format: binance_klines
+  glob: "../data/binance/BTCUSDT-1m-*.zip"
+  resample: 60min
+oos_start: "2026-06-01"
+cost_bps: 10
+periods_per_year: 8760
+correction: holm
+rules:
+  tsmom: {lookback: [4, 16, 48, 96]}
+  vol_breakout: {lookback: [48], k: [2, 3]}
+fitted:
+  time_of_day: {t_min: [1, 2]}

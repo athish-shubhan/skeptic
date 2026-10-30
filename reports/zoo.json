@@ -1,0 +1,148 @@
+{
+  "zoo_primary": {
+    "cost_bps": 10.0,
+    "counts": {
+      "tested": 128,
+      "positive gross": 69,
+      "positive net of costs": 1,
+      "significant after Holm": 0,
+      "survives deflation": 0
+    },
+    "pbo": {
+      "BTCUSDT_15min": 0.0,
+      "BTCUSDT_60min": 0.161,
+      "ETHUSDT_15min": 0.0,
+      "ETHUSDT_60min": 0.2398
+    },
+    "best": [
+      {
+        "signal": "vol_breakout",
+        "params": "{\"lookback\": 48, \"k\": 3, \"data\": \"ETHUSDT_60min\"}",
+        "gross_sr": 0.031559205199931176,
+        "net_sr": 0.004973730922093512,
+        "p_net": 0.38995264371228155,
+        "turnover": 0.049863387978142076,
+        "n": 2928,
+        "p_adj": 1.0,
+        "dsr": 2.2600729407134905e-40
+      },
+      {
+        "signal": "vol_breakout",
+        "params": "{\"lookback\": 96, \"k\": 3, \"data\": \"ETHUSDT_60min\"}",
+        "gross_sr": 0.02205849045707849,
+        "net_sr": -0.00259652084360462,
+        "p_net": 0.5548629063731286,
+        "turnover": 0.0471311475409836,
+        "n": 2928,
+        "p_adj": 1.0,
+        "dsr": 1.479025661637071e-38
+      },
+      {
+        "signal": "tsmom",
+        "params": "{\"lookback\": 96, \"data\": \"ETHUSDT_60min\"}",
+        "gross_sr": 0.006597402999836409,
+        "net_sr": -0.00913635791058364,
+        "p_net": 0.6884836299725428,
+        "turnover": 0.09050546448087432,
+        "n": 2928,
+        "p_adj": 1.0,
+        "dsr": 1.5942441038428745e-41
+      },
+      {
+        "signal": "tsmom",
+        "params": "{\"lookback\": 48, \"data\": \"BTCUSDT_60min\"}",
+        "gross_sr": 0.016669320523973224,
+        "net_sr": -0.009368852493171454,
+        "p_net": 0.6929557188337454,
+        "turnover": 0.11372950819672131,
+        "n": 2928,
+        "p_adj": 1.0,
+        "dsr": 1.2610692175266603e-41
+      },
+      {
+        "signal": "zscore_mr",
+        "params": "{\"lookback\": 96, \"entry\": 2, \"data\": \"ETHUSDT_60min\"}",
+        "gross_sr": 0.007289126970170072,
+        "net_sr": -0.011903568420925667,
+        "p_net": 0.7454616319187977,
+        "turnover": 0.05806010928961749,
+        "n": 2928,
+        "p_adj": 1.0,
+        "dsr": 6.097956619722054e-45
+      }
+    ]
+  },
+  "zoo_sensitivity": {
+    "cost_bps": 2.0,
+    "counts": {
+      "tested": 128,
+      "positive gross": 69,
+      "positive net of costs": 17,
+      "significant after Holm": 0,
+      "survives deflation": 0
+    },
+    "pbo": {
+      "BTCUSDT_15min": 0.1796,
+      "BTCUSDT_60min": 0.4614,
+      "ETHUSDT_15min": 0.449,
+      "ETHUSDT_60min": 0.5904
+    },
+    "best": [
+      {
+        "signal": "vol_breakout",
+        "params": "{\"lookback\": 48, \"k\": 3, \"data\": \"ETHUSDT_60min\"}",
+        "gross_sr": 0.031559205199931176,
+        "net_sr": 0.02622305661803088,
+        "p_net": 0.039692622035564895,
+        "turnover": 0.049863387978142076,
+        "n": 2928,
+        "p_adj": 1.0,
+        "dsr": 0.015417352627440577
+      },
+      {
+        "signal": "flow_imbalance",
+        "params": "{\"lookback\": 4, \"threshold\": -0.2, \"data\": \"BTCUSDT_60min\"}",
+        "gross_sr": 0.03337594906711516,
+        "net_sr": 0.022886921821959474,
+        "p_net": 0.0864990940018282,
+        "turnover": 0.05737704918032787,
+        "n": 2928,
+        "p_adj": 1.0,
+        "dsr": 0.016991726276524878
+      },
+      {
+        "signal": "vol_breakout",
+        "params": "{\"lookback\": 96, \"k\": 3, \"data\": \"ETHUSDT_60min\"}",
+        "gross_sr": 0.02205849045707849,
+        "net_sr": 0.01708637151915721,
+        "p_net": 0.14706526886861038,
+        "turnover": 0.0471311475409836,
+        "n": 2928,
+        "p_adj": 1.0,
+        "dsr": 0.005499266860581755
+      },
+      {
+        "signal": "vol_breakout",
+        "params": "{\"lookback\": 48, \"k\": 3, \"data\": \"BTCUSDT_60min\"}",
+        "gross_sr": 0.02099775672593118,
+        "net_sr": 0.012563797291097932,
+        "p_net": 0.23346698153607282,
+        "turnover": 0.04918032786885246,
+        "n": 2928,
+        "p_adj": 1.0,
+        "dsr": 0.003909614837740514
+      },
+      {
+        "signal": "tsmom",
+        "params": "{\"lookback\": 48, \"data\": \"BTCUSDT_60min\"}",
+        "gross_sr": 0.016669320523973224,
+        "net_sr": 0.01136699825047358,
+        "p_net": 0.26793856024455565,
+        "turnover": 0.11372950819672131,
+        "n": 2928,
+        "p_adj": 1.0,
+        "dsr": 0.005131045642495967
+      }
+    ]
+  }
+}

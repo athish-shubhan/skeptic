@@ -15,7 +15,8 @@ from numpy.typing import ArrayLike
 
 
 class CostModel(Protocol):
-    name: str
+    @property
+    def name(self) -> str: ...
 
     def cost(self, positions: np.ndarray) -> np.ndarray: ...
 

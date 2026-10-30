@@ -67,7 +67,7 @@ def run_grid(bars: pd.DataFrame, rule_grid: dict[str, dict[str, Iterable[Any]]],
     out: list[Trial] = []
 
     def record(name: str, params: dict[str, Any], pos: pd.Series) -> None:
-        p = pos.to_numpy(dtype=float)
+        p = pos.to_numpy(dtype=float, copy=True)
         p[~oos] = 0.0  # no exposure before the OOS window
         bt = backtest(p, ret, cm)
         out.append(Trial(name, params | ({"data": tag} if tag else {}), bt["gross"][oos],
@@ -104,11 +104,12 @@ def funnel(trials: list[Trial], *, alpha: float = 0.05, method: str = "holm",
     n_trials = len(trials)
     sr_var = float(df["net_sr"].var(ddof=1)) if n_trials > 1 else None
     df["dsr"] = [deflated_sharpe_ratio(t.net, n_trials, sr_var) for t in trials]
+    method_label = {"holm": "Holm", "bh": "Benjamini-Hochberg", "bonferroni": "Bonferroni"}
     counts = {
         "tested": n_trials,
         "positive gross": int((df["gross_sr"] > 0).sum()),
         "positive net of costs": int((df["net_sr"] > 0).sum()),
-        f"significant after {method}": int(((df["net_sr"] > 0) & (df["p_adj"] < alpha)).sum()),
+        f"significant after {method_label.get(method, method)}": int(((df["net_sr"] > 0) & (df["p_adj"] < alpha)).sum()),
         "survives deflation": int(((df["net_sr"] > 0) & (df["p_adj"] < alpha)
                                    & (df["dsr"] > dsr_threshold)).sum()),
     }

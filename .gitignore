@@ -6,3 +6,5 @@ __pycache__/
 .hypothesis/
 reports/ledger.sqlite
 site/
+reports/*_sample*
+reports/quick/

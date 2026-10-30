@@ -22,6 +22,7 @@ from skeptic.io import read_binance_klines, resample_bars
 from skeptic.ledger import Ledger
 from skeptic.pbo import pbo
 from skeptic.signals import TimeOfDay, XGBDirection
+from skeptic.tearsheet import render
 from skeptic.zoo import Trial, funnel, run_grid
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -112,6 +113,12 @@ def main() -> None:
                           "best": fn.table.sort_values("net_sr", ascending=False).head(5)
                           .assign(params=lambda d: d["params"].map(json.dumps))
                           .to_dict(orient="records")}
+        best = int(fn.table["net_sr"].idxmax())
+        bt = trials[best]
+        ppy = 8760 if "60min" in bt.params.get("data", "60min") else 35040
+        render(bt.net, gross=bt.gross, ledger=ledger, study=study + suffix, periods_per_year=ppy,
+               title=f"Best of {len(trials)} at {cost:g} bps: {bt.name} {bt.params}",
+               out=OUT / f"{study}{suffix}_best_tearsheet.html")
     chart(results["zoo_primary"]["counts"], results["zoo_sensitivity"]["counts"],
           OUT / f"zoo_funnel{suffix}.png")
     (OUT / f"zoo{suffix}.json").write_text(json.dumps(results, indent=2, default=float))
