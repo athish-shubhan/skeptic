@@ -8,3 +8,4 @@ reports/ledger.sqlite
 site/
 reports/*_sample*
 reports/quick/
+.ipynb_checkpoints/

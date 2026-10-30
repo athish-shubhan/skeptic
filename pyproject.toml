@@ -21,7 +21,8 @@ dependencies = [
 [project.optional-dependencies]
 ml = ["scikit-learn>=1.4", "xgboost>=2.0", "optuna>=3.5"]
 parquet = ["pyarrow>=14"]
-dev = ["pytest>=8", "hypothesis>=6.90", "ruff>=0.4", "mypy>=1.8", "pandas-stubs", "types-PyYAML", "mkdocs>=1.5"]
+dev = ["pytest>=8", "hypothesis>=6.90", "ruff>=0.4", "mypy>=1.8", "pandas-stubs", "types-PyYAML", "mkdocs>=1.5",
+       "nbformat>=5.9", "nbconvert>=7", "ipykernel>=6"]
 
 [project.scripts]
 skeptic = "skeptic.cli:main"

@@ -1,7 +1,7 @@
 PY ?= python
 DATA ?= ../data/binance/*-1m-*.zip
 
-.PHONY: install test lint canaries zoo reproduce docs
+.PHONY: install test lint canaries zoo reproduce docs notebooks note
 install:
 	$(PY) -m pip install -e ".[ml,dev]"
 test:
@@ -18,3 +18,7 @@ reproduce:
 	$(PY) studies/zoo.py --sample
 docs:
 	mkdocs build
+notebooks:
+	$(PY) notebooks/build.py
+note:
+	../tools/note2pdf.sh docs/note.md docs/note.pdf

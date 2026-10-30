@@ -65,6 +65,17 @@ make reproduce     # canaries (quick mode) + zoo on the checked-in 2-month sampl
 
 Full results: put the Binance monthly 1-minute kline zips in `../data/binance/` and run `make zoo`. `skeptic run config.yaml` runs any grid from a YAML file (see [`configs/example.yaml`](configs/example.yaml)).
 
+## Notebooks and note
+
+- [`notebooks/canaries.ipynb`](../notebooks/canaries.ipynb): the four canaries, re-run live where they are quick.
+- [`notebooks/signal_zoo.ipynb`](../notebooks/signal_zoo.ipynb): the funnel, the best configurations and overfitting probability.
+- [How many of the usual signals survive costs and honest statistics? (4-page research note, PDF)](note.pdf)
+
+## Used by
+
+- [ExecLab](../execlab): purged walk-forward splits with an embargo for model tuning, the trial ledger (160 Optuna trials logged) and block-bootstrap intervals on every headline number.
+- [AUD Cost Atlas](../aud-cost-atlas): bootstrap bands for the event study and Holm correction across currency pairs and event types.
+
 ## Limitations
 
 - The zoo covers four months of out-of-sample data in a single market regime. "Nothing survived" is a statement about these signals, costs and months, not about crypto in general.
@@ -82,6 +93,7 @@ Full results: put the Binance monthly 1-minute kline zips in `../data/binance/` 
 | `make canaries` | `reports/canary_*.png`, `reports/canaries.json` (about 45 seconds) |
 | `make zoo` | `reports/zoo_*.csv`, `reports/zoo_funnel.png`, best-of-N tearsheets (about 2 minutes) |
 | `make reproduce` | quick canaries and the sample zoo, for CI |
+| `make notebooks` | rebuild and execute both notebooks |
 
 ## How this transfers to FX and rates
 
