@@ -10,11 +10,19 @@ A backtest with a high Sharpe ratio is cheap to produce. Try enough signals and 
 
 **Noise.** I generated 1,000 strategies with zero true skill, each with 1,260 daily returns drawn from a Student-t distribution with 5 degrees of freedom (fat tails, like real returns). At the 5% level, 4.1% passed a one-sided Sharpe test with no correction, close to the nominal 5%. After Bonferroni, Holm or Benjamini-Hochberg correction, none passed. The best of the 1,000 had an annualised Sharpe of 1.23 and a probabilistic Sharpe ratio (PSR) of 0.997, which looks like a discovery. Its deflated Sharpe ratio (DSR), which compares it to the Sharpe expected from the best of 1,000 zero-skill trials, was 0.32. The DSR got this case right and the PSR did not.
 
+![Noise canary](../reports/canary_noise.png)
+
 **Best-of-N.** The same effect as a curve: the mean annualised Sharpe of the best of N zero-skill strategies on one year of daily data rises from about 0 at N = 1 to about 3.3 at N = 1,000, matching the expected-maximum formula behind the DSR. The PSR of the winner climbs towards 1 as N grows, while its DSR stays near 0.5, as it should for a strategy whose Sharpe sits exactly at the level expected from luck.
+
+![Best of N](../reports/canary_best_of_n.png)
 
 **Leakage.** Two leaks were planted in a random walk, where true predictive accuracy is 50%. A feature containing the next bar's return scored 64.6% under shuffled cross-validation. Built through the point-in-time store, which only exposes a value once its bar has closed, the same feature scored 49.7%. Forward labels over 20 bars overlap heavily; with smooth features a random forest memorises neighbouring samples and scored 76.1% under shuffled K-fold, but 49.8% under purged K-fold with a 20-bar embargo. Each number is a mean over 10 random seeds.
 
+![Leakage canary](../reports/canary_leakage.png)
+
 **Power.** Skepticism has a price. A strategy with a true annual Sharpe of 1.0 is detected 27% of the time with one year of daily data, and 74% with five. If the same strategy was the best of 100 trials, detection falls to 0% at one year and 2% at five, and even a Sharpe of 2.0 needs about five years to be found more often than not. These numbers are the reason to pre-register and to keep N small.
+
+![Power canary](../reports/canary_power.png)
 
 ## 3. The signal zoo
 
@@ -29,6 +37,8 @@ A backtest with a high Sharpe ratio is cheap to produce. Try enough signals and 
 | Positive net of costs | 1 | 17 |
 | Significant after Holm | 0 | 0 |
 | Survives deflation (DSR > 0.95) | 0 | 0 |
+
+![Signal zoo funnel](../reports/zoo_funnel.png)
 
 About half the configurations are positive before costs, which is what you would expect if most have no skill. Costs remove almost all of them. The one survivor at 10 bps, a volatility breakout on 60-minute ETHUSDT bars (48-bar lookback, 3 standard deviations), has a gross annualised Sharpe of 2.95 and a net Sharpe of 0.47, with a one-sided p-value of 0.39 before any correction. It is not distinguishable from noise.
 
