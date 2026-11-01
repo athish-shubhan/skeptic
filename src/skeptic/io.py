@@ -13,8 +13,9 @@ KLINE_COLS = ["open_time", "open", "high", "low", "close", "volume", "close_time
 
 def _ts(x: pd.Series) -> pd.DatetimeIndex:
     """Binance switched spot timestamps from ms to us in 2025; detect by magnitude."""
-    unit = "us" if x.iloc[0] > 1e14 else "ms"
-    return pd.DatetimeIndex(pd.to_datetime(x, unit=unit, utc=True))
+    if x.iloc[0] > 1e14:
+        return pd.DatetimeIndex(pd.to_datetime(x, unit="us", utc=True))
+    return pd.DatetimeIndex(pd.to_datetime(x, unit="ms", utc=True))
 
 
 def read_binance_klines(paths: list[str | Path]) -> pd.DataFrame:

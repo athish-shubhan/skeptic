@@ -43,7 +43,7 @@ def walk_forward_fit(model_factory: Any, bars: pd.DataFrame, oos_start: pd.Times
                      refit: str = "MS") -> pd.Series:
     """Expanding-window refit at each period start in the OOS window; predict the next block."""
     pos = pd.Series(0.0, index=bars.index)
-    starts = pd.date_range(oos_start, bars.index[-1], freq=refit, tz=bars.index.tz)
+    starts = pd.date_range(oos_start, bars.index[-1], freq=refit, tz=pd.DatetimeIndex(bars.index).tz)
     if len(starts) == 0 or starts[0] != oos_start:
         starts = starts.insert(0, oos_start)
     edges = [*starts, bars.index[-1] + pd.Timedelta(1, "ns")]

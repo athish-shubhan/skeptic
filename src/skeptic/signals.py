@@ -113,7 +113,7 @@ class TimeOfDay:
         fwd = _logret(bars["close"]).shift(-1)
         hour = pd.DatetimeIndex(bars.index).hour
         g = fwd.groupby(hour)
-        t = g.mean() / (g.std() / np.sqrt(g.count()))
+        t: pd.Series = g.mean() / (g.std() / np.sqrt(g.count()))
         self.table = np.sign(g.mean()).where(t.abs() > self.t_min, 0.0)
         return self
 

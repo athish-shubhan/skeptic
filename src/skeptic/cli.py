@@ -6,7 +6,7 @@ import argparse
 import glob
 import json
 from pathlib import Path
-from typing import Any
+from typing import Any, cast
 
 import pandas as pd
 import yaml
@@ -46,7 +46,7 @@ def cmd_run(path: str) -> int:
     out = Path(cfg.get("out", "reports"))
     out.mkdir(parents=True, exist_ok=True)
     fn.table.to_csv(out / f"{cfg['study']}_trials.csv", index=False)
-    best = int(fn.table["net_sr"].idxmax())
+    best = int(cast(int, fn.table["net_sr"].idxmax()))
     render(trials[best].net, gross=trials[best].gross, ledger=ledger, study=cfg["study"],
            periods_per_year=cfg.get("periods_per_year", 252),
            title=f"Best of {len(trials)}: {trials[best].name} {trials[best].params}",
