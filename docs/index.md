@@ -25,7 +25,7 @@ Skeptic is a small Python library for testing trading hypotheses without fooling
 
 ## Method
 
-Every trial is logged to a SQLite ledger with its parameters, data window, seed and git hash. Significance uses the probabilistic Sharpe ratio, which adjusts the Sharpe standard error for skew and kurtosis (Lo, 2002; Mertens, 2002). The deflated Sharpe ratio (Bailey and Lopez de Prado, 2014) raises the bar to the Sharpe you would expect from the best of N zero-skill trials, with N read from the ledger. Family-wise error is controlled with Holm. Intervals come from a vectorised stationary block bootstrap (Politis and Romano, 1994). The signal zoo grid, cost assumption and pass criteria were committed in [`preregistration.md`](preregistration.md) before the zoo ran; `git log` shows the order.
+Every trial is logged to a SQLite ledger with its parameters, data window, seed and git hash. Significance uses the probabilistic Sharpe ratio, which adjusts the Sharpe standard error for skew and kurtosis (Lo, 2002; Mertens, 2002). The deflated Sharpe ratio (Bailey and Lopez de Prado, 2014) raises the bar to the Sharpe you would expect from the best of N zero-skill trials, with N read from the ledger. Family-wise error is controlled with Holm. Intervals come from a vectorised stationary block bootstrap (Politis and Romano, 1994). The signal zoo grid, cost assumption and pass criteria were committed in [`preregistration.md`](https://github.com/athish-shubhan/skeptic/blob/main/preregistration.md) before the zoo ran; `git log` shows the order.
 
 ## Library
 
@@ -63,7 +63,7 @@ make test          # unit and property tests
 make reproduce     # canaries (quick mode) + zoo on the checked-in 2-month sample
 ```
 
-Full results: put the Binance monthly 1-minute kline zips in `../data/binance/` and run `make zoo`. `skeptic run config.yaml` runs any grid from a YAML file (see [`configs/example.yaml`](configs/example.yaml)).
+Full results: put the Binance monthly 1-minute kline zips in `../data/binance/` and run `make zoo`. `skeptic run config.yaml` runs any grid from a YAML file (see [`configs/example.yaml`](https://github.com/athish-shubhan/skeptic/blob/main/configs/example.yaml)).
 
 ## Notebooks and note
 
